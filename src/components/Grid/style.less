@@ -1,0 +1,24 @@
+@import url(../../mixin.less);
+.@{prefix}-grid{
+    .clear();
+    &-cell{
+        float: left;
+        min-height: 1px;
+    }
+    .generate-col(24);
+
+    .generate-col(@n, @i: 1) when (@i =< @n) {
+        &-col-@{i} {
+            width: (@i * 100% / @n);
+        }
+        .generate-col(@n, (@i + 1));
+    }
+    .generate-offset(24);
+
+    .generate-offset(@n, @i: 1) when (@i =< @n) {
+        &-offset-@{i} {
+            margin-left: (@i * 100% / @n);
+        }
+        .generate-offset(@n, (@i + 1));
+    }
+}

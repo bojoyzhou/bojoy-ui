@@ -1,0 +1,14 @@
+.DS_STORE
+node_modules
+.module-cache
+*.log*
+static/index.html
+static/edit.html
+sftp-config.json
+static/css
+static/js
+static/index.php
+static/favicon.ico
+static/font
+static/images
+static/thirdparty

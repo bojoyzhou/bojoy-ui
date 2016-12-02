@@ -1,0 +1,112 @@
+@import url(../../mixin.less);
+
+.@{prefix}-menu {
+    border: @divider-color solid 1px;
+    &, &_sub {
+        padding: 0;
+    }
+    &_sub{
+        overflow: hidden;
+        .@{prefix}-menu_item__title {
+            padding-left: 28px;
+        }
+    }
+
+    &_item {
+        position: relative;
+        line-height: 40px;
+        list-style: none;
+        cursor: pointer;
+        &__tail{
+            visibility: hidden;
+            display: none;
+            right: 8px;
+            margin-top: 10px;
+            position: absolute;
+            transform: rotate(-90deg);
+            transition: .2s;
+        }
+        &__title {
+            padding: 0 8px;
+            position: relative;
+            &:hover {
+                background: tint(@light-primary-color);
+            }
+            &--haschild {
+                .@{prefix}-menu_item__tail{
+                    display: inline-block;
+                    visibility: visible;
+                }
+            }
+            &:after{
+                content: ' ';
+                display: block;
+                height: 0;
+                opacity: 0;
+                transition: .3s;
+                width: 2px;
+                background-color: @primary-color;
+                position: absolute;
+                left: auto;
+                bottom: auto;
+                right: 0;
+                top: 0;
+            }
+        }
+        &--active &__title {
+            color: @primary-color;
+            &:after{
+                height: 100%;
+                opacity: 1;
+            }
+        }
+    }
+    &_sub--active{
+        .@{prefix}-menu_item {
+            &__tail{
+                transform: rotate(0deg);
+            }
+        }
+    }
+    &-inline{
+        .clear();
+    }
+    &-inline &_sub {
+        position: absolute;
+        border: @divider-color solid 1px;
+    }
+    &-inline &_sub &_item__title {
+        padding-left: 8px;
+    }
+    &-inline > &_item {
+        float: left;
+    }
+    &-inline > &_item &_item__title{
+        &:after{
+            content: ' ';
+            display: block;
+            width: 0;
+            opacity: 0;
+            transition: .3s;
+            height: 2px;
+            background-color: @primary-color;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            top: auto;
+            right: auto;
+        }
+    }
+    &-inline > &_item--active &_item__title, &-inline > &_item:hover > &_item__title {
+        position: relative;
+        &:after{
+            width: 100%;
+            opacity: 1;
+        }
+    }
+    &-inline &_item {
+        &__tail{
+            display: none;
+        }
+    }
+}

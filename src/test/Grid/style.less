@@ -1,0 +1,12 @@
+@import url(../../style.less);
+.demo-grid-cell{
+    text-align: center;
+    padding: 10px 0;
+    color: #fff;
+    &:nth-child(even){
+        background: tint(@primary-color);
+    }
+    &:nth-child(odd){
+        background: @primary-color;
+    }
+}
