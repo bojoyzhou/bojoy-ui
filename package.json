@@ -44,6 +44,7 @@
   "author": "bojoyzhou",
   "license": "ISC",
   "dependencies": {
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "core-js": "^2.4.1"
   }
 }

@@ -1,5 +1,5 @@
 .enter {
-    transition: max-height 0.3s cubic-bezier(0.46, 0.24, 1, 0.24);
+    transition: max-height 0.3s cubic-bezier(0.46, 0.24, 1, 0.24)!important;
     max-height: 0;
 
     &.enterActive {
@@ -7,7 +7,6 @@
     }
 }
 .leave {
-    transition: max-height 0.3s cubic-bezier(0, 0.6, 0.19, 0.9);
     max-height: 500px;
 
     &.leaveActive {
@@ -15,7 +14,7 @@
     }
 }
 .appear {
-    transition: opacity .7s cubic-bezier(0.46, 0.24, 1, 0.24);
+    transition: opacity .7s cubic-bezier(0.46, 0.24, 1, 0.24)!important;
     opacity: 0;
 
     &.appearActive {

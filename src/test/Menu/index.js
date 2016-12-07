@@ -2,12 +2,12 @@ import React, { Component, PropsType } from 'react'
 import { Link } from 'react-router'
 import style from './style.less'
 
-import {Menu, MenuItem, SubMenu} from '../../components/Menu'
+import {Menu, Item, Sub} from '../../components/Menu'
 class TestMenu extends Component {
     constructor(props, context) {
         super(props, context)
         this.state = {
-            activeKey:3
+            activeKey:"3"
         }
         this.onChange=this.onChange.bind(this)
     }
@@ -20,38 +20,25 @@ class TestMenu extends Component {
     render() {
         return (
             <div>
-                <Menu activeKey={this.state.activeKey} onChange={this.onChange} style={{width: '250px'}}>
-                    <MenuItem idx="1">hahahah</MenuItem>
-                    <MenuItem idx="2">hahahah</MenuItem>
-                    <SubMenu expand={true} title={'SubMenu'}>
-                        <MenuItem idx="3">hahahah</MenuItem>
-                        <MenuItem idx="4">hahahah</MenuItem>
-                    </SubMenu>
-                    <SubMenu expand={false} title={'SubMenu'}>
-                        <MenuItem idx="5">hahahah</MenuItem>
-                        <MenuItem idx="6">hahahah</MenuItem>
-                    </SubMenu>
-                    <SubMenu title={'SubMenu'}>
-                        <MenuItem idx="7">hahahah</MenuItem>
-                        <MenuItem idx="8">hahahah</MenuItem>
-                    </SubMenu>
-                </Menu>
-
-                <Menu activeKey={this.state.activeKey} onChange={this.onChange} type="inline">
-                    <MenuItem idx="1">hahahah</MenuItem>
-                    <MenuItem idx="2">hahahah</MenuItem>
-                    <SubMenu title={'S'}>
-                        <MenuItem idx="3">hahahah</MenuItem>
-                        <MenuItem idx="4">hahahah</MenuItem>
-                    </SubMenu>
-                    <SubMenu title={'SubMenu'}>
-                        <MenuItem idx="5">hahahah</MenuItem>
-                        <MenuItem idx="6">hahahah</MenuItem>
-                    </SubMenu>
-                    <SubMenu title={'SubMenu'}>
-                        <MenuItem idx="7">hahahah</MenuItem>
-                        <MenuItem idx="8">hahahah</MenuItem>
-                    </SubMenu>
+                <Menu activeKey={this.state.activeKey} style={{width: '250px'}}>
+                    <Item data-key="1">hahahah</Item>
+                    <Item data-key="2">hahahah</Item>
+                    <Sub title={'Sub'}>
+                        <Item data-key="3">hahahah</Item>
+                        <Item data-key="4">hahahah</Item>
+                    </Sub>
+                    <Sub title={'Sub'}>
+                        <Item data-key="5">hahahah</Item>
+                        <Item data-key="6">hahahah</Item>
+                    </Sub>
+                    <Sub title={'Sub'}>
+                        <Item data-key="7">hahahah</Item>
+                        <Item data-key="8">hahahah</Item>
+                        <Sub title={'Sub'}>
+                            <Item data-key="9">hahahah</Item>
+                            <Item data-key="10">hahahah</Item>
+                        </Sub>
+                    </Sub>
                 </Menu>
             </div>
         )

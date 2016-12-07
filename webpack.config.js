@@ -3,7 +3,7 @@ var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 var plugins = [
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
+    // new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     new webpack.ProvidePlugin({
         'Promise': 'imports?this=>global!exports?global.Promise!es6-promise', // Thanks Aaron (https://gist.github.com/Couto/b29676dd1ab8714a818f#gistcomment-1584602)
         'fetch': 'imports?this=>global!exports?global.fetch!fetch'
@@ -12,6 +12,10 @@ var plugins = [
         'process.env': {
             NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
         }
+    }),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('./dist/vendor-manifest.json')
     })
 ];
 if (process.env.NODE_ENV === 'production') {
@@ -36,18 +40,18 @@ module.exports = {
     entry: {
         jsx: './index.js',
         html: './index.html',
-        vendor: [
-            'react',
-            'react-dom',
-            'react-redux',
-            'react-router',
-            'react-router-redux',
-            'redux',
-            'redux-actions'
-        ]
+        // vendor: [
+        //     'react',
+        //     'react-dom',
+        //     'react-redux',
+        //     'react-router',
+        //     'react-router-redux',
+        //     'redux',
+        //     'redux-actions'
+        // ]
     },
     output: {
-        path: path.join(__dirname, './static'),
+        path: path.join(__dirname, './dist'),
         filename: 'bundle.js',
     },
     module: {
