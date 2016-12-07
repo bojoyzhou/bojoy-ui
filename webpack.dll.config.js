@@ -39,6 +39,11 @@ module.exports = {
              * 和 output.library 一样即可。
              */
             name: '[name]_library'
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
         })
     ]
 };
