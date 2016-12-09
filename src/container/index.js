@@ -5,6 +5,8 @@ import style from './style.less'
 import TestGrid from '../test/Grid'
 import TestIcon from '../test/Icon'
 import TestMenu from '../test/Menu'
+import TestButton from '../test/Button'
+import TestSelect from '../test/Select'
 
 class App extends Component {
     render() {
@@ -13,6 +15,8 @@ class App extends Component {
                 <TestGrid></TestGrid>
                 <TestIcon></TestIcon>
                 <TestMenu></TestMenu>
+                <TestButton></TestButton>
+                <TestSelect></TestSelect>
             </div>
         )
     }

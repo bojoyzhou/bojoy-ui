@@ -1,0 +1,55 @@
+@import url(../../mixin.less);
+.btn(@font-color, @color){
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    font-size: 14px;
+    color: @font-color;
+    transition: background-color .3s, box-shadow .3s;
+    & when(@color = @normal-color){
+        border: @divider-color solid 1px;
+        background-color: darken(@divider-color, 10%);
+        &:hover{
+            background-color: fadeout(@color, 20);
+            .shadow();
+        }
+    }
+    & when not(@color = @normal-color){
+        border: @color solid 1px;
+        &:hover{
+            background-color: fadeout(@color, 20);
+            .shadow();
+        }
+    }
+}
+.@{prefix}-btn{
+    .generate-btn(length(@btn-types));
+
+    .generate-btn(@n, @i:1) when (@i <= @n){
+        .setup-btn(extract(@btn-types, @i), extract(@btn-colors, @i), extract(@btn-font-colors, @i));
+        .generate-btn(@n, @i + 1);
+    }
+    .setup-btn(@type, @color, @font-color){
+        &-@{type}, &-@{type}--normal {
+            .btn(@font-color, @color);
+            line-height: 32px;
+            border-radius: 5px;
+            padding: 0 10px;
+            background: @color;
+        }
+        &-@{type}--large {
+            .btn(@font-color, @color);
+            line-height: 40px;
+            border-radius: 5px;
+            padding: 0 14px;
+            background: @color;
+        }
+        &-@{type}--small {
+            .btn(@font-color, @color);
+            line-height: 20px;
+            border-radius: 3px;
+            padding: 0 8px;
+            background: @color;
+        }
+    }
+}
